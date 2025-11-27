@@ -33,7 +33,59 @@ __Algorithm:__
 6. Plot the Signals: Use Matplotlib to plot the message signal, carrier signal, and modulated signal.
 
 __Programme:__
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+Ac = 37.7
+fc = 8900
+
+Am = 18.9
+fm = 890
+
+fs = 89000
+beta = 3.6
+
+# Time Vector
+t = np.arange(0, 2/fm, 1/fs)
+
+# Message Signal
+Em = Am * np.cos(2 * np.pi * fm * t)
+
+# Carrier Signal
+Ec = Ac * np.cos(2 * np.pi * fc * t)
+
+# FM Signal
+Efm = Ac * np.cos(2 * np.pi * fc * t + beta * np.sin(2 * np.pi * fm * t))
+
+# Plotting
+plt.figure(figsize=(10, 6))
+
+plt.subplot(3, 1, 1)
+plt.plot(t, Em)
+plt.title("Message Signal")
+plt.grid()
+
+plt.subplot(3, 1, 2)
+plt.plot(t, Ec)
+plt.title("Carrier Signal")
+plt.grid()
+
+plt.subplot(3, 1, 3)
+plt.plot(t, Efm)
+plt.title("FM Signal")
+plt.grid()
+
+plt.tight_layout()
+plt.show()
+
+```
 
 __Output:__
 
+<img width="1189" height="990" alt="image" src="https://github.com/user-attachments/assets/f4e3a1cc-6540-41d3-ad88-a17078452c3f" />
+
 __Result:__
+
+<img width="1280" height="671" alt="image" src="https://github.com/user-attachments/assets/f6bcb64f-5759-4922-815f-9164a5df23b8" />
+
